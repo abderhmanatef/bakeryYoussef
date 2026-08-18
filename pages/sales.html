@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تسجيل بيع - فرن حبيب النبي</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/sales.css">
+</head>
+<body>
+
+<div class="app">
+    <aside class="sidebar">
+        <div class="sidebar-logo">
+            <h2>🥖 فرن حبيب النبي</h2>
+            <p>نظام الكاشير</p>
+        </div>
+        <nav class="menu">
+            <a href="dashboard.html" class="menu-item">📊 لوحة التحكم</a>
+            <a href="sales.html" class="menu-item active">🛒 تسجيل بيع</a>
+            <a href="expenses.html" class="menu-item">📦 المصروفات</a>
+            <a href="reports.html" class="menu-item">📋 التقارير</a>
+            <a href="archive.html" class="menu-item">📂 الأرشيف</a>
+        </nav>
+    </aside>
+
+    <main class="main">
+        <div class="topbar">
+            <span>📅 <span id="currentDate"></span></span>
+            <span>👤 المستخدم: كاشير 1</span>
+        </div>
+
+        <!-- ===== بطاقة إضافة المنتج ===== -->
+        <div class="sales-card">
+            <h3>➕ تسجيل بيع جديد</h3>
+            
+            <div class="product-entry">
+                <div class="field-group">
+                    <label>اسم المنتج</label>
+                    <input type="text" id="productName" placeholder="مثل: عيش بلدي" class="input-field">
+                </div>
+                <div class="field-group">
+                    <label>السعر (جنيه)</label>
+                    <input type="number" id="productPrice" placeholder="السعر" class="input-field" step="0.5" min="0">
+                </div>
+            </div>
+
+            <button class="btn-add-item" onclick="addCurrentProduct()">➕ إضافة منتج</button>
+        </div>
+
+        <!-- ===== قائمة المنتجات المضافة ===== -->
+        <div class="cart-card">
+            <h4>🧾 المنتجات المضافة</h4>
+            <div id="cartItemsList">
+                <p class="empty-msg">لا توجد منتجات مضافة بعد</p>
+            </div>
+            <div class="cart-summary">
+                <span>إجمالي المنتجات:</span>
+                <strong id="cartTotalDisplay">0.00</strong> جنيه
+            </div>
+        </div>
+
+        <!-- ===== الدفع والباقي ===== -->
+        <div class="payment-card">
+            <div class="payment-row">
+                <label>المبلغ المدفوع:</label>
+                <input type="number" id="paidAmount" placeholder="المبلغ المدفوع" class="input-field paid-input" value="0" step="0.5" min="0" oninput="calcChange()">
+            </div>
+            <div class="payment-row change-row">
+                <label>الباقي:</label>
+                <span id="changeDisplay" class="change-amount">0.00</span> جنيه
+            </div>
+            <button class="btn-submit" onclick="submitSale()">✅ تسجيل البيع</button>
+        </div>
+    </main>
+</div>
+
+<script src="../js/sales.js"></script>
+</body>
+</html>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>لوحة التحكم - فرن حبيب النبي</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/dashboard.css">
+</head>
+<body>
+
+<div class="app">
+    <aside class="sidebar">
+        <div class="sidebar-logo">
+            <h2>🥖 فرن حبيب النبي</h2>
+            <p>نظام الكاشير</p>
+        </div>
+       <nav class="menu">
+    <a href="dashboard.html" class="menu-item">📊 لوحة التحكم</a>
+    <a href="sales.html" class="menu-item">🛒 تسجيل بيع</a>
+    <a href="expenses.html" class="menu-item">📦 المصروفات</a>   <!-- ✅ جديد -->
+    <a href="reports.html" class="menu-item">📋 التقارير</a>
+    <a href="archive.html" class="menu-item">📂 الأرشيف</a>
+</nav>
+    </aside>
+
+    <main class="main">
+        <div class="topbar">
+            <span>📅 <span id="currentDate"></span></span>
+            <span>👤 المستخدم: كاشير 1</span>
+        </div>
+
+        <div class="stats-container">
+            <div class="card">
+                <h4>💰 إجمالي المبيعات</h4>
+                <p class="text-green"><span id="todaySales">0.00</span> جنيه</p>
+            </div>
+            <div class="card">
+                <h4>🔁 إجمالي المرتجعات</h4>
+                <p class="text-red"><span id="todayReturns">0.00</span> جنيه</p>
+            </div>
+            <div class="card">
+                <h4>📦 إجمالي المصروفات</h4>
+                <p class="text-orange"><span id="todayExpenses">0.00</span> جنيه</p>
+            </div>
+            <div class="card" style="border-right: 5px solid #168238;">
+                <h4>✅ صافي الخزنة (المتبقي)</h4>
+                <p class="text-blue" style="font-size:32px;"><span id="todayNet">0.00</span> جنيه</p>
+            </div>
+        </div>
+    </main>
+</div>
+
+<script src="../js/main.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const now = new Date();
+        document.getElementById('currentDate').innerText = now.toLocaleDateString('ar-EG', {
+            weekday: 'long', year: 'numeric', month: 'long', day: 'numeric'
+        });
+
+        // جلب البيانات
+        const sales = JSON.parse(localStorage.getItem('bakerySales')) || [];
+        const returns = JSON.parse(localStorage.getItem('bakeryReturns')) || [];
+        const expenses = JSON.parse(localStorage.getItem('bakeryExpenses')) || [];
+
+        // حساب الإجماليات
+        const totalSales = sales.reduce((s, i) => s + Number(i.total || 0), 0);
+        const totalReturns = returns.reduce((s, i) => s + Number(i.total || 0), 0);
+        const totalExpenses = expenses.reduce((s, i) => s + Number(i.total || 0), 0);
+
+        // صافي الخزنة = المبيعات - المرتجعات - المصروفات
+        const net = totalSales - totalReturns - totalExpenses;
+
+        // عرض البيانات
+        document.getElementById('todaySales').innerText = totalSales.toFixed(2);
+        document.getElementById('todayReturns').innerText = totalReturns.toFixed(2);
+        document.getElementById('todayExpenses').innerText = totalExpenses.toFixed(2);
+        document.getElementById('todayNet').innerText = net.toFixed(2);
+    });
+</script>
+
+</body>
+</html>

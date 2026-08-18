@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>التقارير - فرن حبيب النبي</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/reports.css">
+</head>
+<body>
+
+<div class="app">
+    <aside class="sidebar">
+        <div class="sidebar-logo">
+            <h2>🥖 فرن حبيب النبي</h2>
+            <p>نظام الكاشير</p>
+        </div>
+        <nav class="menu">
+    <a href="dashboard.html" class="menu-item">📊 لوحة التحكم</a>
+    <a href="sales.html" class="menu-item">🛒 تسجيل بيع</a>
+    <a href="expenses.html" class="menu-item">📦 المصروفات</a>   <!-- ✅ جديد -->
+    <a href="reports.html" class="menu-item">📋 التقارير</a>
+    <a href="archive.html" class="menu-item">📂 الأرشيف</a>
+</nav>
+    </aside>
+
+    <main class="main">
+        <div class="topbar">
+            <span>📅 <span id="currentDate"></span></span>
+            <span>👤 المستخدم: كاشير 1</span>
+        </div>
+
+        <!-- كروت الإجماليات الكلية -->
+        <div class="stats-container" style="grid-template-columns: repeat(4, 1fr);">
+            <div class="card">
+                <h4>💰 إجمالي المبيعات</h4>
+                <p class="text-green"><span id="totalSalesNum">0.00</span> جنيه</p>
+            </div>
+            <div class="card">
+                <h4>🔁 إجمالي المرتجعات</h4>
+                <p class="text-red"><span id="totalReturnsNum">0.00</span> جنيه</p>
+            </div>
+            <div class="card">
+                <h4>📦 إجمالي المصروفات</h4>
+                <p class="text-orange"><span id="totalExpensesNum">0.00</span> جنيه</p>
+            </div>
+            <div class="card" style="border-right: 5px solid #168238;">
+                <h4>✅ صافي الخزنة</h4>
+                <p class="text-blue" style="font-size:28px;"><span id="totalNetNum">0.00</span> جنيه</p>
+            </div>
+        </div>
+
+        <!-- أزرار التصفير والأرشفة -->
+        <div class="action-buttons">
+            <button class="btn-reset-day" onclick="resetDay()">🗑️ تصفير اليوم</button>
+            <button class="btn-archive" onclick="archiveDay()">📦 أرشفة اليوم</button>
+            <button class="btn-view-archive" onclick="viewArchive()">📂 عرض الأرشيف</button>
+        </div>
+
+        <!-- جدول المبيعات -->
+        <div class="card">
+            <h3>📋 فواتير المبيعات</h3>
+            <table class="cart-table">
+                <thead>
+                    <tr><th>رقم الفاتورة</th><th>المنتجات</th><th>التاريخ</th><th>المبلغ</th><th>إجراء</th></tr>
+                </thead>
+                <tbody id="salesHistoryBody"></tbody>
+            </table>
+        </div>
+
+        <!-- جدول المرتجعات -->
+        <div class="card" style="margin-top:25px;">
+            <h3>🔁 فواتير المرتجعات</h3>
+            <table class="cart-table">
+                <thead>
+                    <tr><th>رقم الفاتورة</th><th>المنتجات</th><th>التاريخ</th><th>المبلغ</th></tr>
+                </thead>
+                <tbody id="returnsHistoryBody"></tbody>
+            </table>
+        </div>
+
+        <!-- ===== ✅ جدول المصروفات (جديد) ===== -->
+        <div class="card" style="margin-top:25px;">
+            <h3>📦 سجل المصروفات (الخامات)</h3>
+            <table class="cart-table">
+                <thead>
+                    <tr><th>#</th><th>الخامة</th><th>الكمية</th><th>سعر الوحدة</th><th>الإجمالي</th><th>التاريخ</th></tr>
+                </thead>
+                <tbody id="expensesHistoryBody"></tbody>
+            </table>
+        </div>
+    </main>
+</div>
+
+<script src="../js/reports.js"></script>
+</body>
+</html>

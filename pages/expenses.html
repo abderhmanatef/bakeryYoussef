@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>المصروفات - فرن حبيب النبي</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/expenses.css">
+</head>
+<body>
+
+<div class="app">
+    <aside class="sidebar">
+        <div class="sidebar-logo">
+            <h2>🥖 فرن حبيب النبي</h2>
+            <p>نظام الكاشير</p>
+        </div>
+        <nav class="menu">
+            <a href="dashboard.html" class="menu-item">📊 لوحة التحكم</a>
+            <a href="sales.html" class="menu-item">🛒 تسجيل بيع</a>
+            <a href="expenses.html" class="menu-item active">📦 المصروفات</a>
+            <a href="reports.html" class="menu-item">📋 التقارير</a>
+            <a href="archive.html" class="menu-item">📂 الأرشيف</a>
+        </nav>
+    </aside>
+
+    <main class="main">
+        <div class="topbar">
+            <span>📅 <span id="currentDate"></span></span>
+            <span>👤 المستخدم: كاشير 1</span>
+        </div>
+
+        <!-- ===== بطاقة إضافة مصروف ===== -->
+        <div class="expense-card">
+            <h3>📦 تسجيل مصروف جديد</h3>
+
+            <div class="expense-entry">
+                <div class="field-group">
+                    <label>اسم الخامة</label>
+                    <input type="text" id="expenseName" placeholder="مثل: دقيق" class="input-field">
+                </div>
+                <div class="field-group">
+                    <label>الكمية</label>
+                    <input type="number" id="expenseQty" placeholder="الكمية" class="input-field" step="0.1" min="0">
+                </div>
+                <div class="field-group">
+                    <label>سعر الوحدة (جنيه)</label>
+                    <input type="number" id="expensePrice" placeholder="سعر الوحدة" class="input-field" step="0.5" min="0">
+                </div>
+            </div>
+
+            <!-- ✅ مصدر الدفع (أزرار) -->
+            <div class="payment-source">
+                <label>💰 مصدر الدفع:</label>
+                <div class="source-toggle">
+                    <button type="button" class="source-btn active" data-value="cash" onclick="setExpenseSource('cash')">
+                        🏦 خزنة المحل
+                    </button>
+                    <button type="button" class="source-btn" data-value="personal" onclick="setExpenseSource('personal')">
+                        👤 حساب شخصي
+                    </button>
+                </div>
+            </div>
+
+            <div class="expense-total-row">
+                <span>💵 إجمالي المصروف:</span>
+                <strong id="expenseTotalDisplay" class="text-orange">0.00</strong> جنيه
+            </div>
+
+            <button class="btn-add-expense" onclick="addExpense()">➕ إضافة مصروف</button>
+        </div>
+
+        <!-- ===== قائمة المصروفات ===== -->
+        <div class="expense-list-card">
+            <h4>📋 سجل المصروفات اليوم</h4>
+            <div id="expensesList">
+                <p class="empty-msg">لا توجد مصروفات مسجلة اليوم</p>
+            </div>
+            <div class="expense-summary">
+                <span>إجمالي المصروفات:</span>
+                <strong id="totalExpensesDisplay" class="text-red">0.00</strong> جنيه
+            </div>
+            <button class="btn-submit-expenses" onclick="submitExpenses()">✅ تسجيل المصروفات</button>
+        </div>
+    </main>
+</div>
+
+<script src="../js/expenses.js"></script>
+</body>
+</html>

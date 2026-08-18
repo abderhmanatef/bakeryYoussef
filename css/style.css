@@ -1,0 +1,213 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background: #f4f6f9;
+    color: #333;
+}
+
+.app {
+    display: flex;
+    min-height: 100vh;
+}
+
+.sidebar {
+    width: 220px;
+    background: #1e2a3a;
+    color: white;
+    padding: 20px 15px;
+    display: flex;
+    flex-direction: column;
+    flex-shrink: 0;
+}
+
+.sidebar-logo h2 {
+    font-size: 20px;
+    margin-bottom: 5px;
+}
+.sidebar-logo p {
+    font-size: 13px;
+    color: #aab;
+    border-bottom: 1px solid #3a4a5a;
+    padding-bottom: 15px;
+    margin-bottom: 20px;
+}
+
+.menu {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.menu-item {
+    color: #ccd;
+    text-decoration: none;
+    padding: 10px 12px;
+    border-radius: 8px;
+    transition: 0.2s;
+    font-size: 15px;
+}
+.menu-item:hover {
+    background: #2a3a4a;
+    color: white;
+}
+.menu-item.active {
+    background: #2d7d9a;
+    color: white;
+}
+
+.main {
+    flex: 1;
+    padding: 20px 30px;
+}
+
+.topbar {
+    display: flex;
+    justify-content: space-between;
+    background: white;
+    padding: 12px 20px;
+    border-radius: 10px;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+    margin-bottom: 25px;
+    font-size: 14px;
+}
+
+.card {
+    background: white;
+    padding: 18px 22px;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+}
+
+.text-green { color: #168238; font-weight: bold; }
+.text-red { color: #d33; font-weight: bold; }
+.text-blue { color: #2d7d9a; font-weight: bold; }
+
+.cart-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+.cart-table th {
+    background: #f0f2f5;
+    padding: 10px;
+    text-align: center;
+}
+.cart-table td {
+    padding: 10px;
+    text-align: center;
+    border-bottom: 1px solid #eee;
+}
+/* ========================================
+   ===== التجاوب مع الشاشات الصغيرة =====
+   ======================================== */
+
+/* ===== للأجهزة اللوحية (عرض أقل من 992px) ===== */
+@media (max-width: 992px) {
+    .app {
+        flex-direction: column;
+    }
+    
+    .sidebar {
+        width: 100%;
+        padding: 15px;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: center;
+    }
+    
+    .sidebar-logo {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+    }
+    .sidebar-logo h2 {
+        font-size: 18px;
+        margin: 0;
+    }
+    .sidebar-logo p {
+        display: none;
+    }
+    
+    .menu {
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 5px;
+        margin-top: 10px;
+        width: 100%;
+    }
+    .menu-item {
+        padding: 8px 12px;
+        font-size: 13px;
+        flex: 1;
+        text-align: center;
+        min-width: 60px;
+    }
+    
+    .main {
+        padding: 15px;
+    }
+    
+    .topbar {
+        flex-direction: column;
+        align-items: center;
+        gap: 5px;
+        font-size: 13px;
+        padding: 10px 15px;
+    }
+}
+
+/* ===== للفون (عرض أقل من 600px) ===== */
+@media (max-width: 600px) {
+    .sidebar {
+        padding: 10px;
+        flex-direction: column;
+        align-items: stretch;
+    }
+    
+    .sidebar-logo {
+        justify-content: center;
+    }
+    .sidebar-logo h2 {
+        font-size: 16px;
+    }
+    
+    .menu {
+        justify-content: center;
+    }
+    .menu-item {
+        font-size: 12px;
+        padding: 6px 10px;
+        min-width: 50px;
+    }
+    
+    .main {
+        padding: 10px;
+    }
+    
+    .topbar {
+        font-size: 12px;
+        padding: 8px 12px;
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .card {
+        padding: 12px 15px;
+    }
+    
+    .cart-table th,
+    .cart-table td {
+        font-size: 12px;
+        padding: 6px 4px;
+    }
+    
+    .cart-table {
+        font-size: 12px;
+    }
+}

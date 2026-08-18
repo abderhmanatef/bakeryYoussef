@@ -1,0 +1,43 @@
+.stats-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
+
+.card h4 {
+    color: #555;
+    font-weight: 500;
+    font-size: 16px;
+    margin-bottom: 8px;
+}
+.card p {
+    font-size: 28px;
+    margin: 0;
+}
+
+.text-orange { 
+    color: #e67e22; 
+    font-weight: bold; 
+}
+/* ===== للأجهزة اللوحية ===== */
+@media (max-width: 992px) {
+    .stats-container {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15px;
+    }
+}
+
+/* ===== للفون ===== */
+@media (max-width: 600px) {
+    .stats-container {
+        grid-template-columns: 1fr;
+        gap: 12px;
+    }
+    
+    .card h4 {
+        font-size: 14px;
+    }
+    .card p {
+        font-size: 24px;
+    }
+}
