@@ -70,55 +70,27 @@
     font-size: 15px;
 }
 /* ===== للأجهزة اللوحية ===== */
-@media (max-width: 992px) {
-    .stats-container {
-        grid-template-columns: repeat(2, 1fr);
+/* تنسيق شاشات الموبايل (أقل من 768 بكسل) */
+@media (max-width: 768px) {
+    .reports-stats-container { /* أو أي فئة تسمى بها حاوية التقارير */
+        display: grid;
+        grid-template-columns: 1fr 1fr;
         gap: 15px;
-    }
-    
-    .action-buttons {
-        gap: 8px;
-    }
-    .action-buttons button {
-        flex: 1;
-        min-width: 100px;
-        font-size: 13px;
-        padding: 8px 14px;
-    }
-}
-
-/* ===== للفون ===== */
- @media (max-width: 768px) {
-    /* حل 1: خلي الجدول يتنقل يمين ويسار (Scroll) */
-    .cart-table-wrapper { /* متأكد إنك محاط بكلاس wrapper */
-        overflow-x: auto;
-        display: block;
-    }
-
-    /* حل 2: (خيار أفضل) حول الجدول لبطاقات مكدسة فوق بعض */
-    .cart-table, .cart-table thead, .cart-table tbody, .cart-table th, .cart-table td, .cart-table tr {
-        display: block;
+        padding: 10px;
         width: 100%;
+        box-sizing: border-box;
     }
-    .cart-table thead tr {
-        display: none; /* أخفي عنوان الجدول في الموبايل */
-    }
-    .cart-table tr {
-        margin-bottom: 1rem;
-        border: 1px solid #ddd;
-        padding: 0.5rem;
-        border-radius: 8px;
-    }
-    .cart-table td {
-        text-align: right; /* لو عربي يفضل اليمين */
+
+    .reports-stats-card {
+        background: #fff;
+        border-radius: 12px;
+        padding: 20px 10px;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.05);
         display: flex;
-        justify-content: space-between;
-        padding: 0.5rem 0;
-        border-bottom: 1px solid #eee;
-    }
-    .cart-table td:before {
-        content: attr(data-label); /* لازم تحط data-label في HTML عندك عشان يظهر اسم العمود */
-        font-weight: bold;
-        margin-left: 1rem;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        min-height: 100px;
     }
 }
