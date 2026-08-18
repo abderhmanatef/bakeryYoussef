@@ -88,43 +88,37 @@
 }
 
 /* ===== للفون ===== */
-@media (max-width: 600px) {
-    .stats-container {
-        grid-template-columns: 1fr;
-        gap: 12px;
+ @media (max-width: 768px) {
+    /* حل 1: خلي الجدول يتنقل يمين ويسار (Scroll) */
+    .cart-table-wrapper { /* متأكد إنك محاط بكلاس wrapper */
+        overflow-x: auto;
+        display: block;
     }
-    
-    .stats-container .card h4 {
-        font-size: 14px;
-    }
-    .stats-container .card p {
-        font-size: 22px;
-    }
-    
-    .action-buttons {
-        flex-direction: column;
-        gap: 8px;
-    }
-    .action-buttons button {
+
+    /* حل 2: (خيار أفضل) حول الجدول لبطاقات مكدسة فوق بعض */
+    .cart-table, .cart-table thead, .cart-table tbody, .cart-table th, .cart-table td, .cart-table tr {
+        display: block;
         width: 100%;
-        font-size: 13px;
-        padding: 10px 12px;
-        justify-content: center;
     }
-    
-    .card h3 {
-        font-size: 16px;
+    .cart-table thead tr {
+        display: none; /* أخفي عنوان الجدول في الموبايل */
     }
-    
-    .cart-table th,
+    .cart-table tr {
+        margin-bottom: 1rem;
+        border: 1px solid #ddd;
+        padding: 0.5rem;
+        border-radius: 8px;
+    }
     .cart-table td {
-        font-size: 11px;
-        padding: 5px 3px;
-        word-break: break-word;
+        text-align: right; /* لو عربي يفضل اليمين */
+        display: flex;
+        justify-content: space-between;
+        padding: 0.5rem 0;
+        border-bottom: 1px solid #eee;
     }
-    
-    .cart-table .btn-return {
-        font-size: 11px;
-        padding: 3px 8px;
+    .cart-table td:before {
+        content: attr(data-label); /* لازم تحط data-label في HTML عندك عشان يظهر اسم العمود */
+        font-weight: bold;
+        margin-left: 1rem;
     }
 }
